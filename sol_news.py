@@ -146,12 +146,25 @@ def sol_news():
         hud_data_title_pos = int((char_limit / 2) - (len(hud_data_title) / 2))
         print(str(' ' * hud_data_title_pos) + Style.BRIGHT + Fore.CYAN + hud_data_title + Style.RESET_ALL)
         print('')
-        print(nasa_climate_data[0])
-        print(nasa_climate_data[1])
-        print(nasa_climate_data[2])
-        print(nasa_climate_data[3])
-        print(nasa_climate_data[4])
-        print(nasa_climate_data[5])
+
+        max_nasa_climate_data_len = []
+        max_nasa_climate_data_len_1 = []
+        max_nasa_climate_data_len.append(len(nasa_climate_data[0]))
+        max_nasa_climate_data_len.append(len(nasa_climate_data[1]))
+        max_nasa_climate_data_len.append(len(nasa_climate_data[2]))
+        max_nasa_climate_data_len.append(len(nasa_climate_data[3]))
+        max_nasa_climate_data_len.append(len(nasa_climate_data[4]))
+        max_nasa_climate_data_len.append(len(nasa_climate_data[5]))
+        max_nasa_climate_data_len_fin = max(max_nasa_climate_data_len)
+        max_nasa_climate_data_len_fin += 4
+
+        max_nasa_climate_data_len_1.append(len(nasa_climate_data[1]))
+        max_nasa_climate_data_len_1.append(len(nasa_climate_data[4]))
+        max_nasa_climate_data_len_fin_1 = max(max_nasa_climate_data_len_1)
+        max_nasa_climate_data_len_fin_1 += 4
+
+        print(nasa_climate_data[0] + str(' '*(max_nasa_climate_data_len_fin - len(nasa_climate_data[0]))) + str(nasa_climate_data[1]) + str(' '*(max_nasa_climate_data_len_fin_1 - len(nasa_climate_data[1]))) + str(nasa_climate_data[3]))
+        print(nasa_climate_data[3] + str(' ' *(max_nasa_climate_data_len_fin - len(nasa_climate_data[3]))) + str(nasa_climate_data[4]) + str(' '*(max_nasa_climate_data_len_fin_1 - len(nasa_climate_data[4]))) + str(nasa_climate_data[5]))
 
         print('')
         print(Style.BRIGHT + Back.RED + str(' ' * char_limit) + Style.RESET_ALL)
