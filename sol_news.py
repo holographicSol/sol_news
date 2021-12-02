@@ -329,7 +329,7 @@ def meteorological_data():
 
         clear_console_line()
         url = 'https://www.gdacs.org/xml/rss.xml'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning meteorological data: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -506,7 +506,7 @@ def nasa_climate():
         ocean_heat_content, ocean_heat_content_error, ocean_heat_content_units = '', '', ''
 
         url = 'https://climate.nasa.gov/vital-signs/global-temperature/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -523,7 +523,7 @@ def nasa_climate():
         nasa_climate_data.append(global_temperature)
 
         url = 'https://climate.nasa.gov/vital-signs/carbon-dioxide/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -540,7 +540,7 @@ def nasa_climate():
         nasa_climate_data.append(carbon_dioxide)
 
         url = 'https://climate.nasa.gov/vital-signs/arctic-sea-ice/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -560,7 +560,7 @@ def nasa_climate():
         nasa_climate_data.append(arctic_sea_ice_extent)
 
         url = 'https://climate.nasa.gov/vital-signs/ice-sheets/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -580,7 +580,7 @@ def nasa_climate():
         nasa_climate_data.append(ice_sheets)
 
         url = 'https://climate.nasa.gov/vital-signs/sea-level/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -597,7 +597,7 @@ def nasa_climate():
         nasa_climate_data.append(sea_level)
 
         url = 'https://climate.nasa.gov/vital-signs/ocean-heat/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -651,7 +651,7 @@ def funk_0():
         title_data = []
         dat_file = dir_now + '/bbc_news-world_' + tm_stamp + '.txt'
         url = 'https://www.bbc.co.uk/news/world'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -671,7 +671,7 @@ def funk_0():
                 fo.close()
                 clear_console_line()
 
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -703,7 +703,7 @@ def funk_1():
         href_data = []
         clear_console_line()
         url = 'https://www.metro.co.uk/news/world'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
         rHead = requests.get(url)
         data = rHead.text
@@ -729,7 +729,7 @@ def funk_1():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -760,7 +760,7 @@ def funk_2():
         href_data = []
         clear_console_line()
         url = 'https://news.sky.com/world'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
         rHead = requests.get(url)
         data = rHead.text
@@ -781,7 +781,7 @@ def funk_2():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -812,7 +812,7 @@ def funk_3():
         href_data = []
         clear_console_line()
         url = 'https://www.express.co.uk/news/world'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
         rHead = requests.get(url)
         data = rHead.text
@@ -831,7 +831,7 @@ def funk_3():
                 history.append(url)
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -862,7 +862,7 @@ def funk_4():
         title_data = []
         clear_console_line()
         url = 'https://www.infowars.com/category/14/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
         rHead = requests.get(url)
         data = rHead.text
@@ -881,7 +881,7 @@ def funk_4():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -913,7 +913,7 @@ def funk_5():
         filter_year = tm_stamp.split('-')
         clear_console_line()
         url = 'https://www.theguardian.com/world'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
         rHead = requests.get(url)
         data = rHead.text
@@ -932,7 +932,7 @@ def funk_5():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -963,7 +963,7 @@ def funk_6():
         title_data = []
         clear_console_line()
         url = 'https://www.dailymail.co.uk/news/worldnews/index.html'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
         rHead = requests.get(url)
         data = rHead.text
@@ -983,7 +983,7 @@ def funk_6():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -1014,7 +1014,7 @@ def funk_7():
         title_data = []
         clear_console_line()
         url = 'https://www.rt.com/news/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
         rHead = requests.get(url)
         data = rHead.text
@@ -1035,7 +1035,7 @@ def funk_7():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -1067,7 +1067,7 @@ def funk_8():
 
         clear_console_line()
         url = 'https://www.nytimes.com/section/world'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
 
         rHead = requests.get(url)
@@ -1092,7 +1092,7 @@ def funk_8():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 rHead = requests.get(url)
@@ -1124,7 +1124,7 @@ def funk_9():
 
         clear_console_line()
         url = 'https://www.lifenews.com/category/international/'
-        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning base url: ' + url)
         pr_technical_data(technical_data)
 
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
@@ -1149,7 +1149,7 @@ def funk_9():
                 fo.close()
 
                 clear_console_line()
-                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url: ' + url)
                 pr_technical_data(technical_data)
 
                 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
