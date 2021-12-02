@@ -1,4 +1,5 @@
 GDAC Defcon and World News data stored and displayed. Designed for use on Android Sony Xperia Tablet Z as a dedicated Sol News Device.
+Written by Benjamin Jack Cullen - All rights reserved.
 
 On Android (recommended display 1920x1080):
 1. install & open termux

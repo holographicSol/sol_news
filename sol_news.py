@@ -1,3 +1,5 @@
+""" Written by Benjamin Jack Cullen - All rights reserved."""
+
 import os
 import distutils.dir_util
 import time
