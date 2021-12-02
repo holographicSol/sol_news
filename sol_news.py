@@ -26,6 +26,7 @@ meteo_hud_dr = []
 meteo_hud_wf = []
 defcon_hud = ''
 doomday_hud = ''
+nasa_climate_data = []
 
 
 def clear_console():
@@ -60,6 +61,7 @@ def sol_news():
     global meteo_hud_dr
     global meteo_hud_wf
     global defcon_hud, doomday_hud
+    global nasa_climate_data
 
     clear_console()
 
@@ -136,6 +138,20 @@ def sol_news():
         print('')
         print(defcon_hud)
         print(doomday_hud)
+
+        print('')
+        print(Style.BRIGHT + Back.RED + str(' ' * char_limit) + Style.RESET_ALL)
+        print('')
+        hud_data_title = 'NASA CLIMATE CHANGE - VITAL SIGNS OF THE PLANET'
+        hud_data_title_pos = int((char_limit / 2) - (len(hud_data_title) / 2))
+        print(str(' ' * hud_data_title_pos) + Style.BRIGHT + Fore.CYAN + hud_data_title + Style.RESET_ALL)
+        print('')
+        print(nasa_climate_data[0])
+        print(nasa_climate_data[1])
+        print(nasa_climate_data[2])
+        print(nasa_climate_data[3])
+        print(nasa_climate_data[4])
+        print(nasa_climate_data[5])
 
         print('')
         print(Style.BRIGHT + Back.RED + str(' ' * char_limit) + Style.RESET_ALL)
@@ -459,6 +475,159 @@ def meteorological_data():
             print(technical_data)
         time.sleep(1)
         meteorological_data()
+
+
+def nasa_climate():
+    global debug_mode, tm_stamp, nasa_climate_data
+    try:
+        dir_now = './extra_data/'
+        distutils.dir_util.mkpath(dir_now)
+        dat_file = './extra_data/nasa_climate' + '.txt'
+
+        nasa_climate_data = []
+        global_temperature = ''
+        carbon_dioxide = ''
+        arctic_sea_ice_extent, arctic_sea_ice_extent_units = '', ''
+        ice_sheets, ice_sheets_units = '', ''
+        sea_level, sea_level_error, sea_level_units = '', '', ''
+        ocean_heat_content, ocean_heat_content_error, ocean_heat_content_units = '', '', ''
+
+        url = 'https://climate.nasa.gov/vital-signs/global-temperature/'
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        pr_technical_data(technical_data)
+
+        rHead = requests.get(url)
+        data = rHead.text
+        soup = BeautifulSoup(data, "html.parser")
+        for row in soup.find_all():
+            # print(row)
+            if row is not None:
+                var = str(row).strip()
+                if var.startswith('<div class="value">'):
+                    global_temperature = var
+        global_temperature = global_temperature.split()
+        global_temperature = '[' + Style.BRIGHT+Fore.GREEN+'Global Temperature: ' + str(global_temperature[2]) + '°C' + Style.RESET_ALL + ']'
+        nasa_climate_data.append(global_temperature)
+
+        url = 'https://climate.nasa.gov/vital-signs/carbon-dioxide/'
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        pr_technical_data(technical_data)
+
+        rHead = requests.get(url)
+        data = rHead.text
+        soup = BeautifulSoup(data, "html.parser")
+        for row in soup.find_all():
+            # print(row)
+            if row is not None:
+                var = str(row).strip()
+                if var.startswith('<div class="value">'):
+                    carbon_dioxide = var
+        carbon_dioxide = carbon_dioxide.split()
+        carbon_dioxide = '[' + Style.BRIGHT+Fore.GREEN+'Carbon Dioxide: ' + str(carbon_dioxide[2]) + 'ppm' + Style.RESET_ALL + ']'
+        nasa_climate_data.append(carbon_dioxide)
+
+        url = 'https://climate.nasa.gov/vital-signs/arctic-sea-ice/'
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        pr_technical_data(technical_data)
+
+        rHead = requests.get(url)
+        data = rHead.text
+        soup = BeautifulSoup(data, "html.parser")
+        for row in soup.find_all():
+            # print(row)
+            if row is not None:
+                var = str(row).strip()
+                if var.startswith('<div class="change_number">'):
+                    arctic_sea_ice_extent = var
+                if var.startswith('<div class="graph_rate_units">'):
+                    arctic_sea_ice_extent_units = var
+        arctic_sea_ice_extent = arctic_sea_ice_extent.split()
+        arctic_sea_ice_extent_units = arctic_sea_ice_extent_units.split()
+        arctic_sea_ice_extent = '[' + Style.BRIGHT+Fore.GREEN+'Arctic Sea Ice: ' + str(arctic_sea_ice_extent[2]) + '% ' + str(arctic_sea_ice_extent_units[3]) + ' ' + str(arctic_sea_ice_extent_units[4]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(arctic_sea_ice_extent)
+
+        url = 'https://climate.nasa.gov/vital-signs/ice-sheets/'
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        pr_technical_data(technical_data)
+
+        rHead = requests.get(url)
+        data = rHead.text
+        soup = BeautifulSoup(data, "html.parser")
+        for row in soup.find_all():
+            # print(row)
+            if row is not None:
+                var = str(row).strip()
+                if var.startswith('<div class="change_number">'):
+                    ice_sheets = var
+                if var.startswith('<div class="graph_rate_units">'):
+                    ice_sheets_units = var
+        ice_sheets = ice_sheets.split()
+        ice_sheets_units = ice_sheets_units.split()
+        ice_sheets = '[' + Style.BRIGHT+Fore.GREEN+'Ice Sheets: ' + str(ice_sheets[2]) + ' ' + str(ice_sheets_units[2]) + ' ' + str(ice_sheets_units[3]) + ' ' + str(ice_sheets_units[4]) + ' ' + str(ice_sheets_units[5]) + ' ' + str(ice_sheets_units[6]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(ice_sheets)
+
+        url = 'https://climate.nasa.gov/vital-signs/sea-level/'
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        pr_technical_data(technical_data)
+
+        rHead = requests.get(url)
+        data = rHead.text
+        soup = BeautifulSoup(data, "html.parser")
+        for row in soup.find_all():
+            # print(row)
+            if row is not None:
+                var = str(row).strip()
+                if var.startswith('<div class="value">'):
+                    sea_level = var
+        sea_level = sea_level.split()
+        sea_level = '[' + Style.BRIGHT+Fore.GREEN+'Sea Level: ' + str(sea_level[2]) + str(sea_level[5]) + str(sea_level[6]) + str(sea_level[10]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(sea_level)
+
+        url = 'https://climate.nasa.gov/vital-signs/ocean-heat/'
+        technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning article url :' + url)
+        pr_technical_data(technical_data)
+
+        rHead = requests.get(url)
+        data = rHead.text
+        soup = BeautifulSoup(data, "html.parser")
+        for row in soup.find_all():
+            # print(row)
+            if row is not None:
+                var = str(row).strip()
+                if var.startswith('<div class="value">'):
+                    ocean_heat_content = var
+        ocean_heat_content = ocean_heat_content.split()
+        ocean_heat_content = '[' + Style.BRIGHT+Fore.GREEN+'Ocean Heat Content: ' + str(ocean_heat_content[2]) + str(ocean_heat_content[5]) + str(ocean_heat_content[6]) + str(ocean_heat_content[10]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(ocean_heat_content)
+
+        tm_stamp = str(datetime.datetime.now())
+        toFile = '[' + tm_stamp + '] [Global Temperature: ' + global_temperature + '] [Carbon Dioxide: ' + carbon_dioxide + '] [Arctic Sea Ice: ' + arctic_sea_ice_extent + '] [Ice Sheets: ' + ice_sheets + '] [Sea Levels: ' + sea_level + '] [Ocean Heat Content: ' + ocean_heat_content + ']'
+        to_file_check = toFile.split('] [')
+        tmp_str_to_file = to_file_check[1] + to_file_check[2] + to_file_check[3] + to_file_check[4] + to_file_check[5] + to_file_check[6]
+
+        tmp_str_in_file = ''
+        if os.path.exists(dat_file):
+            with codecs.open(dat_file, 'r', encoding='utf-8') as fo:
+                for line in fo:
+                    line = line.strip()
+                    line = line.split('] [')
+                    tmp_str_in_file = line[1] + line[2] + line[3] + line[4] + line[5] + line[6]
+
+        if tmp_str_in_file != tmp_str_to_file:
+            # print('-- nasa climate value updated')
+            with codecs.open('./extra_data/nasa_climate.txt', 'a', encoding="UTF-8") as fo:
+                fo.write(toFile + '\n')
+            fo.close()
+
+    except Exception as e:
+        clear_console_line()
+        technical_data = str('[Time Now:' + str(datetime.datetime.now()) + ' Issue Time:' + str(tm_stamp) + '] ' + str(e) + '. reattempting in 1 second')
+        if debug_mode is False:
+            pr_technical_data(technical_data)
+        else:
+            print(technical_data)
+        time.sleep(1)
+        nasa_climate()
 
 
 def funk_0():
@@ -1042,11 +1211,11 @@ def initialize():
                 make_dirs()
                 meteorological_data()
                 funk_extras()
+                nasa_climate()
                 sol_news()
 
                 clear_console_line()
-                technical_data = str(
-                    '[' + str(datetime.datetime.now()) + '] -- sleeping:' + str(user_input_2) + ' seconds')
+                technical_data = str('[' + str(datetime.datetime.now()) + '] -- sleeping:' + str(user_input_2) + ' seconds')
                 pr_technical_data(technical_data)
 
                 if first_run is True:
