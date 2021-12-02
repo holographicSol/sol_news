@@ -24,3 +24,5 @@ the tablet/device serves as a low power (ideally) device displaying and storing 
 Use a CLI wizard or file browser to read the articles, find articles from certain time or find articles containing foobar.
 
 ![DEMO IMAGE](/Demo.png)
+
+Further updates will dial in the way in which data is stored to make everything more neat and tidy.
