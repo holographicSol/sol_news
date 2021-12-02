@@ -1,4 +1,5 @@
-GDAC Defcon and World News data stored and displayed. Designed for use on Android Sony Xperia Tablet Z as a dedicated Sol News Device.
+GDAC Defcon and World News data stored and displayed. Designed for use on Android Sony Xperia Tablet Z as a dedicated Sol News Device to display
+on a desk, bookcase, car etc. 
 Written by Benjamin Jack Cullen - All rights reserved.
 
 Note: Writes to console are formatted specifically for Sony Xperia Tablet Z screen geometry.
@@ -13,6 +14,7 @@ On Android (recommended display 1920x1080):
 4. cd sol_news
 5. python sol_news.py
 
+If all meteorological data turns red its a bad day in hell. 
 
 To use with displays smaller than 1920x1080 modify the char_limit variable to anything you like, although you may need to perform
 other formatting too.
