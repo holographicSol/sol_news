@@ -16,3 +16,6 @@ To use with displays smaller than 1920x1080 modify the char_limit variable to an
 other formatting too.
 
 Developed on Windows 10 using Python version 3.9 for Windows/Linux and Android namely for Sony Xperia Tablet Z.
+
+The news articles are not meant to be read except in internet/power down events where information could help.
+Use a CLI wizard or file browser to read the articles, find articles from certain time or find articles containing foobar.
