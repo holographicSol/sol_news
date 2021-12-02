@@ -4,9 +4,10 @@ Written by Benjamin Jack Cullen - All rights reserved.
 On Android (recommended display 1920x1080):
 1. install & open termux
 2. command line:
-    pkg install requests
-    pkg install bs4
-    pkg install colorama
+    pkg install python
+    pip install requests
+    pip install bs4
+    pip install colorama
 3. git clone https://github.com/holographicSol/sol_news
 4. cd sol_news
 5. python sol_news.py
