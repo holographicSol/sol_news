@@ -163,7 +163,7 @@ def sol_news():
         max_nasa_climate_data_len_fin_1 = max(max_nasa_climate_data_len_1)
         max_nasa_climate_data_len_fin_1 += 4
 
-        print(nasa_climate_data[0] + str(' '*(max_nasa_climate_data_len_fin - len(nasa_climate_data[0]))) + str(nasa_climate_data[1]) + str(' '*(max_nasa_climate_data_len_fin_1 - len(nasa_climate_data[1]))) + str(nasa_climate_data[3]))
+        print(nasa_climate_data[0] + str(' '*(max_nasa_climate_data_len_fin - len(nasa_climate_data[0]))) + str(nasa_climate_data[1]) + str(' '*(max_nasa_climate_data_len_fin_1 - len(nasa_climate_data[1]))) + str(nasa_climate_data[2]))
         print(nasa_climate_data[3] + str(' ' *(max_nasa_climate_data_len_fin - len(nasa_climate_data[3]))) + str(nasa_climate_data[4]) + str(' '*(max_nasa_climate_data_len_fin_1 - len(nasa_climate_data[4]))) + str(nasa_climate_data[5]))
 
         print('')
