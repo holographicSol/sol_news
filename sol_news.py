@@ -519,8 +519,11 @@ def nasa_climate():
                 if var.startswith('<div class="value">'):
                     global_temperature = var
         global_temperature = global_temperature.split()
-        global_temperature = '[' + Style.BRIGHT+Fore.GREEN+'Global Temperature: ' + str(global_temperature[2]) + '°C' + Style.RESET_ALL + ']'
-        nasa_climate_data.append(global_temperature)
+
+        global_temperature_file = '[' + 'Global Temperature: ' + str(global_temperature[2]) + '°C]'
+
+        global_temperature_hud = '[' + Style.BRIGHT + Fore.GREEN + 'Global Temperature: ' + str(global_temperature[2]) + '°C' + Style.RESET_ALL + ']'
+        nasa_climate_data.append(global_temperature_hud)
 
         url = 'https://climate.nasa.gov/vital-signs/carbon-dioxide/'
         technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
@@ -536,8 +539,11 @@ def nasa_climate():
                 if var.startswith('<div class="value">'):
                     carbon_dioxide = var
         carbon_dioxide = carbon_dioxide.split()
-        carbon_dioxide = '[' + Style.BRIGHT+Fore.GREEN+'Carbon Dioxide: ' + str(carbon_dioxide[2]) + 'ppm' + Style.RESET_ALL + ']'
-        nasa_climate_data.append(carbon_dioxide)
+
+        carbon_dioxide_file = '[' + 'Carbon Dioxide: ' + str(carbon_dioxide[2]) + 'ppm]'
+
+        carbon_dioxide_hud = '[' + Style.BRIGHT + Fore.GREEN + 'Carbon Dioxide: ' + str(carbon_dioxide[2]) + 'ppm' + Style.RESET_ALL + ']'
+        nasa_climate_data.append(carbon_dioxide_hud)
 
         url = 'https://climate.nasa.gov/vital-signs/arctic-sea-ice/'
         technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
@@ -556,8 +562,11 @@ def nasa_climate():
                     arctic_sea_ice_extent_units = var
         arctic_sea_ice_extent = arctic_sea_ice_extent.split()
         arctic_sea_ice_extent_units = arctic_sea_ice_extent_units.split()
-        arctic_sea_ice_extent = '[' + Style.BRIGHT+Fore.GREEN+'Arctic Sea Ice: ' + str(arctic_sea_ice_extent[2]) + '% ' + str(arctic_sea_ice_extent_units[3]) + ' ' + str(arctic_sea_ice_extent_units[4]) + Style.RESET_ALL + ']'
-        nasa_climate_data.append(arctic_sea_ice_extent)
+
+        arctic_sea_ice_extent_file = '[' + 'Arctic Sea Ice: ' + str(arctic_sea_ice_extent[2]) + '% ' + str(arctic_sea_ice_extent_units[3]) + ' ' + str(arctic_sea_ice_extent_units[4]) + ']'
+
+        arctic_sea_ice_extent_hud = '[' + Style.BRIGHT + Fore.GREEN + 'Arctic Sea Ice: ' + str(arctic_sea_ice_extent[2]) + '% ' + str(arctic_sea_ice_extent_units[3]) + ' ' + str(arctic_sea_ice_extent_units[4]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(arctic_sea_ice_extent_hud)
 
         url = 'https://climate.nasa.gov/vital-signs/ice-sheets/'
         technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
@@ -576,8 +585,11 @@ def nasa_climate():
                     ice_sheets_units = var
         ice_sheets = ice_sheets.split()
         ice_sheets_units = ice_sheets_units.split()
-        ice_sheets = '[' + Style.BRIGHT+Fore.GREEN+'Ice Sheets: ' + str(ice_sheets[2]) + ' ' + str(ice_sheets_units[2]) + ' ' + str(ice_sheets_units[3]) + ' ' + str(ice_sheets_units[4]) + ' ' + str(ice_sheets_units[5]) + ' ' + str(ice_sheets_units[6]) + Style.RESET_ALL + ']'
-        nasa_climate_data.append(ice_sheets)
+
+        ice_sheets_file = '[' + 'Ice Sheets: ' + str(ice_sheets[2]) + ' ' + str(ice_sheets_units[2]) + ' ' + str(ice_sheets_units[3]) + ' ' + str(ice_sheets_units[4]) + ' ' + str(ice_sheets_units[5]) + ' ' + str(ice_sheets_units[6]) + ']'
+
+        ice_sheets_hud = '[' + Style.BRIGHT+Fore.GREEN+'Ice Sheets: ' + str(ice_sheets[2]) + ' ' + str(ice_sheets_units[2]) + ' ' + str(ice_sheets_units[3]) + ' ' + str(ice_sheets_units[4]) + ' ' + str(ice_sheets_units[5]) + ' ' + str(ice_sheets_units[6]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(ice_sheets_hud)
 
         url = 'https://climate.nasa.gov/vital-signs/sea-level/'
         technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
@@ -593,8 +605,11 @@ def nasa_climate():
                 if var.startswith('<div class="value">'):
                     sea_level = var
         sea_level = sea_level.split()
-        sea_level = '[' + Style.BRIGHT+Fore.GREEN+'Sea Level: ' + str(sea_level[2]) + str(sea_level[5]) + str(sea_level[6]) + str(sea_level[10]) + Style.RESET_ALL + ']'
-        nasa_climate_data.append(sea_level)
+
+        sea_level_file = '[' + 'Sea Level: ' + str(sea_level[2]) + str(sea_level[5]) + str(sea_level[6]) + str(sea_level[10]) + ']'
+
+        sea_level_hud = '[' + Style.BRIGHT+Fore.GREEN+'Sea Level: ' + str(sea_level[2]) + str(sea_level[5]) + str(sea_level[6]) + str(sea_level[10]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(sea_level_hud)
 
         url = 'https://climate.nasa.gov/vital-signs/ocean-heat/'
         technical_data = str('[' + str(datetime.datetime.now()) + '] -- scanning NASA climate data: ' + url)
@@ -610,23 +625,24 @@ def nasa_climate():
                 if var.startswith('<div class="value">'):
                     ocean_heat_content = var
         ocean_heat_content = ocean_heat_content.split()
-        ocean_heat_content = '[' + Style.BRIGHT+Fore.GREEN+'Ocean Heat Content: ' + str(ocean_heat_content[2]) + str(ocean_heat_content[5]) + str(ocean_heat_content[6]) + str(ocean_heat_content[10]) + Style.RESET_ALL + ']'
-        nasa_climate_data.append(ocean_heat_content)
+
+        ocean_heat_content_file = '[' + 'Ocean Heat Content: ' + str(ocean_heat_content[2]) + str(ocean_heat_content[5]) + str(ocean_heat_content[6]) + str(ocean_heat_content[10]) + ']'
+
+        ocean_heat_content_hud = '[' + Style.BRIGHT+Fore.GREEN+'Ocean Heat Content: ' + str(ocean_heat_content[2]) + str(ocean_heat_content[5]) + str(ocean_heat_content[6]) + str(ocean_heat_content[10]) + Style.RESET_ALL + ']'
+        nasa_climate_data.append(ocean_heat_content_hud)
 
         tm_stamp = str(datetime.datetime.now())
-        toFile = '[' + tm_stamp + '] [Global Temperature: ' + global_temperature + '] [Carbon Dioxide: ' + carbon_dioxide + '] [Arctic Sea Ice: ' + arctic_sea_ice_extent + '] [Ice Sheets: ' + ice_sheets + '] [Sea Levels: ' + sea_level + '] [Ocean Heat Content: ' + ocean_heat_content + ']'
-        to_file_check = toFile.split('] [')
-        tmp_str_to_file = to_file_check[1] + to_file_check[2] + to_file_check[3] + to_file_check[4] + to_file_check[5] + to_file_check[6]
+        toFile = '[' + tm_stamp + ']' + ' ' + str(global_temperature_file + ' ' + carbon_dioxide_file + ' ' + arctic_sea_ice_extent_file + ' ' + ' ' + ice_sheets_file + ' ' + sea_level_file + ' ' + ocean_heat_content_file)
+        to_file_check = str(global_temperature_file + ' ' + carbon_dioxide_file + ' ' + arctic_sea_ice_extent_file + ' ' + ' ' + ice_sheets_file + ' ' + sea_level_file + ' ' + ocean_heat_content_file)
 
         tmp_str_in_file = ''
         if os.path.exists(dat_file):
             with codecs.open(dat_file, 'r', encoding='utf-8') as fo:
                 for line in fo:
                     line = line.strip()
-                    line = line.split('] [')
-                    tmp_str_in_file = line[1] + line[2] + line[3] + line[4] + line[5] + line[6]
+                    tmp_str_in_file = line
 
-        if tmp_str_in_file != tmp_str_to_file:
+        if not tmp_str_in_file.endswith(to_file_check):
             # print('-- nasa climate value updated')
             with codecs.open('./extra_data/nasa_climate.txt', 'a', encoding="UTF-8") as fo:
                 fo.write(toFile + '\n')
