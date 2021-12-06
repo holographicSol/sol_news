@@ -8,6 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 import codecs
 from colorama import Fore, Back, Style
+import re
 
 
 encode = u'\u5E73\u621015\u200e'
@@ -27,6 +28,17 @@ meteo_hud_wf = []
 defcon_hud = ''
 doomday_hud = ''
 nasa_climate_data = []
+prev_soup_defcon_news_strat_com = []
+prev_soup_defcon_news_indo_pac_com = []
+prev_soup_defcon_news_euro_com = []
+prev_soup_defcon_news_africa_com = []
+prev_soup_defcon_news_cent_com = []
+prev_soup_defcon_news_cyber_com = []
+prev_soup_defcon_news_northern_com = []
+prev_soup_defcon_news_southern_com = []
+prev_soup_defcon_news_space_com = []
+prev_soup_defcon_news_spacial_op_com = []
+prev_soup_defcon_news_transportation_com = []
 
 
 def clear_console():
@@ -173,6 +185,7 @@ def sol_news():
         print('')
 
         print('[' + str(datetime.datetime.now()) + '] -- performing data scan', end='\r', flush=True)
+        defcon_news()
         funk_0()
         funk_1()
         funk_2()
@@ -299,6 +312,132 @@ def funk_extras():
             print(technical_data)
         time.sleep(1)
         funk_extras()
+
+
+def defcon_news():
+    global debug_mode, tm_stamp
+    global prev_soup_defcon_news_strat_com
+    global prev_soup_defcon_news_indo_pac_com
+    global prev_soup_defcon_news_euro_com
+    global prev_soup_defcon_news_africa_com
+    global prev_soup_defcon_news_cent_com
+    global prev_soup_defcon_news_cyber_com
+    global prev_soup_defcon_news_northern_com
+    global prev_soup_defcon_news_southern_com
+    global prev_soup_defcon_news_space_com
+    global prev_soup_defcon_news_spacial_op_com
+    global prev_soup_defcon_news_transportation_com
+
+    url = 'https://www.defconlevel.com/news-alerts.php'
+    print('[' + str(datetime.datetime.now()) + '] -- scanning defcon level:', url, end='\r', flush=True)
+
+    url_item = []
+
+    rHead = requests.get(url)
+    data = rHead.text
+    soup = BeautifulSoup(data, "html.parser")
+    for link in soup.find_all('a'):
+        href = link.get('href')
+        if href is not None:
+            if href.endswith('command-news.php'):
+                if href not in url_item:
+                    url_item.append(href)
+                    # print(href)
+
+    for _ in url_item:
+        url = _
+
+        print('[' + str(datetime.datetime.now()) + '] -- scanning defcon level:', url, end='\r', flush=True)
+
+        article_title = _.replace('https://www.defconlevel.com/', '').replace('.php', '')
+
+        out_file = './extra_data/defcon_news_' + article_title + '_' + tm_stamp + '.txt'
+        rHead = requests.get(url)
+        data = rHead.text
+        soup = BeautifulSoup(data, "html.parser")
+        elements = soup.findAll()
+        for element in elements:
+            text = element.text.strip()
+            element.string = re.sub(r"[\n][\W]+[^\w]", "\n", text)
+
+        soup = str(soup)
+
+        if 'strategic-command' in _:
+            if soup != prev_soup_defcon_news_strat_com:
+                prev_soup_defcon_news_strat_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'indo-pacific-command' in _:
+            if soup != prev_soup_defcon_news_indo_pac_com:
+                prev_soup_defcon_news_indo_pac_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'european-command' in _:
+            if soup != prev_soup_defcon_news_euro_com:
+                prev_soup_defcon_news_euro_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'africa-command' in _:
+            if soup != prev_soup_defcon_news_africa_com:
+                prev_soup_defcon_news_africa_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'central-command' in _:
+            if soup != prev_soup_defcon_news_cent_com:
+                prev_soup_defcon_news_cent_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'cyber-command' in _:
+            if soup != prev_soup_defcon_news_cyber_com:
+                prev_soup_defcon_news_cyber_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'northern-command' in _:
+            if soup != prev_soup_defcon_news_northern_com:
+                prev_soup_defcon_news_northern_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'southern-command' in _:
+            if soup != prev_soup_defcon_news_southern_com:
+                prev_soup_defcon_news_southern_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'space-command' in _:
+            if soup != prev_soup_defcon_news_space_com:
+                prev_soup_defcon_news_space_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'special-operations-command' in _:
+            if soup != prev_soup_defcon_news_spacial_op_com:
+                prev_soup_defcon_news_spacial_op_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
+
+        elif 'transportation-command' in _:
+            if soup != prev_soup_defcon_news_transportation_com:
+                prev_soup_defcon_news_transportation_com = soup
+                with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
+                    fo.writelines(soup)
+                fo.close()
 
 
 def meteorological_data():
