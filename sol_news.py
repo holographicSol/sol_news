@@ -366,78 +366,78 @@ def defcon_news():
         soup = str(soup)
 
         if 'strategic-command' in _:
-            if soup != prev_soup_defcon_news_strat_com:
-                prev_soup_defcon_news_strat_com = soup
+            if str(soup) != prev_soup_defcon_news_strat_com:
+                prev_soup_defcon_news_strat_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'indo-pacific-command' in _:
-            if soup != prev_soup_defcon_news_indo_pac_com:
-                prev_soup_defcon_news_indo_pac_com = soup
+            if str(soup) != prev_soup_defcon_news_indo_pac_com:
+                prev_soup_defcon_news_indo_pac_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'european-command' in _:
-            if soup != prev_soup_defcon_news_euro_com:
-                prev_soup_defcon_news_euro_com = soup
+            if str(soup) != prev_soup_defcon_news_euro_com:
+                prev_soup_defcon_news_euro_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'africa-command' in _:
-            if soup != prev_soup_defcon_news_africa_com:
-                prev_soup_defcon_news_africa_com = soup
+            if str(soup) != prev_soup_defcon_news_africa_com:
+                prev_soup_defcon_news_africa_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'central-command' in _:
-            if soup != prev_soup_defcon_news_cent_com:
-                prev_soup_defcon_news_cent_com = soup
+            if str(soup) != prev_soup_defcon_news_cent_com:
+                prev_soup_defcon_news_cent_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'cyber-command' in _:
-            if soup != prev_soup_defcon_news_cyber_com:
-                prev_soup_defcon_news_cyber_com = soup
+            if str(soup) != prev_soup_defcon_news_cyber_com:
+                prev_soup_defcon_news_cyber_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'northern-command' in _:
-            if soup != prev_soup_defcon_news_northern_com:
-                prev_soup_defcon_news_northern_com = soup
+            if str(soup) != prev_soup_defcon_news_northern_com:
+                prev_soup_defcon_news_northern_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'southern-command' in _:
-            if soup != prev_soup_defcon_news_southern_com:
-                prev_soup_defcon_news_southern_com = soup
+            if str(soup) != prev_soup_defcon_news_southern_com:
+                prev_soup_defcon_news_southern_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'space-command' in _:
-            if soup != prev_soup_defcon_news_space_com:
-                prev_soup_defcon_news_space_com = soup
+            if str(soup) != prev_soup_defcon_news_space_com:
+                prev_soup_defcon_news_space_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'special-operations-command' in _:
-            if soup != prev_soup_defcon_news_spacial_op_com:
-                prev_soup_defcon_news_spacial_op_com = soup
+            if str(soup) != prev_soup_defcon_news_spacial_op_com:
+                prev_soup_defcon_news_spacial_op_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
 
         elif 'transportation-command' in _:
-            if soup != prev_soup_defcon_news_transportation_com:
-                prev_soup_defcon_news_transportation_com = soup
+            if str(soup) != prev_soup_defcon_news_transportation_com:
+                prev_soup_defcon_news_transportation_com = str(soup)
                 with codecs.open(out_file, 'a', encoding="UTF-8") as fo:
                     fo.writelines(soup)
                 fo.close()
