@@ -354,7 +354,7 @@ def defcon_news():
 
         article_title = _.replace('https://www.defconlevel.com/', '').replace('.php', '')
 
-        out_file = './extra_data/defcon_news_' + article_title.replace('/', '') + '_' + tm_stamp + '.txt'
+        out_file = './extra_data/defcon_news_' + article_title.replace('/', '') + '.txt'
         rHead = requests.get(url)
         data = rHead.text
         soup = BeautifulSoup(data, "html.parser")
