@@ -144,12 +144,12 @@ def sol_news():
         print('')
         print(Style.BRIGHT + Back.RED + str(' ' * char_limit) + Style.RESET_ALL)
         print('')
-        hud_data_title = 'DEFCON WARNING SYSTEM AND DOOMSDAY CLOCK'
+        hud_data_title = 'DEFCON WARNING SYSTEM'  # AND DOOMSDAY CLOCK'
         hud_data_title_pos = int((char_limit / 2) - (len(hud_data_title) / 2))
         print(str(' ' * hud_data_title_pos) + Style.BRIGHT + Fore.CYAN + hud_data_title + Style.RESET_ALL)
         print('')
         print(defcon_hud)
-        print(doomday_hud)
+        # print(doomday_hud)
 
         print('')
         print(Style.BRIGHT + Back.RED + str(' ' * char_limit) + Style.RESET_ALL)
@@ -233,43 +233,46 @@ def funk_extras():
         rHead = requests.get(url)
         data = rHead.text
         soup = BeautifulSoup(data, "html.parser")
-        for row in soup.find_all():
+        for row in soup.find_all('p'):
             text = row.get_text()
-            if text.startswith('Overall Current Defcon Level Today: '):
-                text = str(text).split()
-                for _ in text:
-                    if _.isdigit():
-                        defcon_level = _
+            # text = re.sub(r'\[.*?\]', '', text)
+            # print(text)
+            if 'Defcon level' in text:
+                # print(text)
+                text = text.split('.')
+                print(text[0])
+                defcon_level = text[0][-1]
+                break
 
-                if defcon_level == '1':
-                    toFile = str('[Defcon Level] [' + defcon_level + '] [Cocked Pistol] [Nuclear Threat is Either in Progress or Imminent] [Maximum Readiness]')
-                    defcon_level_data = '[' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Defcon Level'+Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.LIGHTWHITE_EX+str(defcon_level)+Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Cocked Pistol'+Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Nuclear Threat is Either in Progress or Imminent'+Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Maximum Readiness'+Style.RESET_ALL + ']'
-                elif defcon_level == '2':
-                    toFile = str('[Defcon Level] [' + defcon_level + '] [Fast Pace] [At the Next Step to War or Nuclear Threat] [Penultimate Readiness]')
-                    defcon_level_data = '[' + Style.BRIGHT+Fore.RED + 'Defcon Level' + Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.RED + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.RED + 'Fast Pace' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.RED + 'At the Next Step to War or Nuclear Threat' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.RED + 'Penultimate Readiness' + Style.RESET_ALL + ']'
-                elif defcon_level == '3':
-                    toFile = str('[Defcon Level] [' + defcon_level + '] [Round House] [Prepared Cautious in High State of Readiness] [Higher Level Readiness]')
-                    defcon_level_data = '[' + Style.BRIGHT+Fore.YELLOW + 'Defcon Level'+Style.RESET_ALL+'] ' + '[' + Style.BRIGHT+Fore.YELLOW + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.YELLOW + 'Round House' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.YELLOW + 'Prepared Cautious in High State of Readiness' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.YELLOW + 'Higher Level Readiness' + Style.RESET_ALL + ']'
-                elif defcon_level == '4':
-                    toFile = str('[Defcon Level] [' + defcon_level + '] [Double Take] [Intel Gathering & Strengthening of Security] [Above Normal Readiness]')
-                    defcon_level_data = '[' + Style.BRIGHT+Fore.GREEN + 'Defcon Level' + Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.GREEN + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.GREEN + 'Double Take' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.GREEN + 'Intel Gathering & Strengthening of Security' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.GREEN + 'Above Normal Readiness' + Style.RESET_ALL + ']'
-                elif defcon_level == '5':
-                    toFile = str('[Defcon Level] [' + defcon_level + '] [Fade Out] [Complete and Total State of Peace] [Lowest Level Readiness]')
-                    defcon_level_data = '[' + Style.BRIGHT+Fore.CYAN + 'Defcon Level' + Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.CYAN + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.CYAN + 'Fade Out' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.CYAN + 'Complete and Total State of Peace' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.CYAN + 'Lowest Level Readiness' + Style.RESET_ALL + ']'
+        if defcon_level == '1':
+            toFile = str('[Defcon Level] [' + defcon_level + '] [Cocked Pistol] [Nuclear Threat is Either in Progress or Imminent] [Maximum Readiness]')
+            defcon_level_data = '[' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Defcon Level'+Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.LIGHTWHITE_EX+str(defcon_level)+Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Cocked Pistol'+Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Nuclear Threat is Either in Progress or Imminent'+Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.LIGHTWHITE_EX+'Maximum Readiness'+Style.RESET_ALL + ']'
+        elif defcon_level == '2':
+            toFile = str('[Defcon Level] [' + defcon_level + '] [Fast Pace] [At the Next Step to War or Nuclear Threat] [Penultimate Readiness]')
+            defcon_level_data = '[' + Style.BRIGHT+Fore.RED + 'Defcon Level' + Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.RED + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.RED + 'Fast Pace' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.RED + 'At the Next Step to War or Nuclear Threat' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.RED + 'Penultimate Readiness' + Style.RESET_ALL + ']'
+        elif defcon_level == '3':
+            toFile = str('[Defcon Level] [' + defcon_level + '] [Round House] [Prepared Cautious in High State of Readiness] [Higher Level Readiness]')
+            defcon_level_data = '[' + Style.BRIGHT+Fore.YELLOW + 'Defcon Level'+Style.RESET_ALL+'] ' + '[' + Style.BRIGHT+Fore.YELLOW + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.YELLOW + 'Round House' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.YELLOW + 'Prepared Cautious in High State of Readiness' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.YELLOW + 'Higher Level Readiness' + Style.RESET_ALL + ']'
+        elif defcon_level == '4':
+            toFile = str('[Defcon Level] [' + defcon_level + '] [Double Take] [Intel Gathering & Strengthening of Security] [Above Normal Readiness]')
+            defcon_level_data = '[' + Style.BRIGHT+Fore.GREEN + 'Defcon Level' + Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.GREEN + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.GREEN + 'Double Take' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.GREEN + 'Intel Gathering & Strengthening of Security' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.GREEN + 'Above Normal Readiness' + Style.RESET_ALL + ']'
+        elif defcon_level == '5':
+            toFile = str('[Defcon Level] [' + defcon_level + '] [Fade Out] [Complete and Total State of Peace] [Lowest Level Readiness]')
+            defcon_level_data = '[' + Style.BRIGHT+Fore.CYAN + 'Defcon Level' + Style.RESET_ALL + '] ' + '[' + Style.BRIGHT+Fore.CYAN + str(defcon_level) + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.CYAN + 'Fade Out' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.CYAN + 'Complete and Total State of Peace' + Style.RESET_ALL + '] [' + Style.BRIGHT+Fore.CYAN + 'Lowest Level Readiness' + Style.RESET_ALL + ']'
 
-                defcon_hud = defcon_level_data
+        defcon_hud = defcon_level_data
 
-                target_line = ''
-                if os.path.exists('./extra_data/extra_information.txt'):
-                    with open('./extra_data/extra_information.txt', 'r') as fo:
-                        for line in fo:
-                            line = line.strip()
-                            if 'Defcon Level' in line:
-                                target_line = line
-                if toFile not in target_line:
-                    with codecs.open('./extra_data/extra_information.txt', 'a', encoding="UTF-8") as fo:
-                        fo.write('[' + str(datetime.datetime.now()) + '] ' + toFile + '\n')
-                    fo.close()
+        target_line = ''
+        if os.path.exists('./extra_data/extra_information.txt'):
+            with open('./extra_data/extra_information.txt', 'r') as fo:
+                for line in fo:
+                    line = line.strip()
+                    if 'Defcon Level' in line:
+                        target_line = line
+        if toFile not in target_line:
+            with codecs.open('./extra_data/extra_information.txt', 'a', encoding="UTF-8") as fo:
+                fo.write('[' + str(datetime.datetime.now()) + '] ' + toFile + '\n')
+            fo.close()
     except Exception as e:
         clear_console_line()
         technical_data = str('[Time Now:' + str(datetime.datetime.now()) + ' Issue Time:' + str(tm_stamp) + '] ' + str(e) + '. reattempting in 1 second')
@@ -279,39 +282,39 @@ def funk_extras():
             print(technical_data)
         time.sleep(1)
         funk_extras()
-    try:
-        clear_console_line()
-        url = 'https://www.defconlevel.com/doomsday-clock.php'
-        print('[' + str(datetime.datetime.now()) + '] -- scanning doomsday clock:', url, end='\r', flush=True)
-
-        rHead = requests.get(url)
-        data = rHead.text
-        soup = BeautifulSoup(data, "html.parser")
-        for row in soup.find_all():
-            text = row.get_text()
-            if text.endswith(' To Midnight'):
-                text = '[' + Style.BRIGHT+Fore.RED+'Doomsday Clock ' + str(text).replace('Doomsday Clock', '') + Style.RESET_ALL+ ']'
-                doomday_hud = text
-                target_line = ''
-                if os.path.exists('./extra_data/extra_information.txt'):
-                    with open('./extra_data/extra_information.txt', 'r') as fo:
-                        for line in fo:
-                            line = line.strip()
-                            if 'Doomsday Clock' in line:
-                                target_line = line
-                if text not in target_line:
-                    with codecs.open('./extra_data/extra_information.txt', 'a', encoding="UTF-8") as fo:
-                        fo.write('[' + str(datetime.datetime.now()) + '] ' + text + '\n')
-                    fo.close()
-    except Exception as e:
-        clear_console_line()
-        technical_data = str('[Time Now:' + str(datetime.datetime.now()) + ' Issue Time:' + str(tm_stamp) + '] ' + str(e) + '. reattempting in 1 second')
-        if debug_mode is False:
-            pr_technical_data(technical_data)
-        else:
-            print(technical_data)
-        time.sleep(1)
-        funk_extras()
+    # try:
+    #     clear_console_line()
+    #     url = 'https://www.defconlevel.com/doomsday-clock.php'
+    #     print('[' + str(datetime.datetime.now()) + '] -- scanning doomsday clock:', url, end='\r', flush=True)
+    #
+    #     rHead = requests.get(url)
+    #     data = rHead.text
+    #     soup = BeautifulSoup(data, "html.parser")
+    #     for row in soup.find_all():
+    #         text = row.get_text()
+    #         if text.endswith(' To Midnight'):
+    #             text = '[' + Style.BRIGHT+Fore.RED+'Doomsday Clock ' + str(text).replace('Doomsday Clock', '') + Style.RESET_ALL+ ']'
+    #             doomday_hud = text
+    #             target_line = ''
+    #             if os.path.exists('./extra_data/extra_information.txt'):
+    #                 with open('./extra_data/extra_information.txt', 'r') as fo:
+    #                     for line in fo:
+    #                         line = line.strip()
+    #                         if 'Doomsday Clock' in line:
+    #                             target_line = line
+    #             if text not in target_line:
+    #                 with codecs.open('./extra_data/extra_information.txt', 'a', encoding="UTF-8") as fo:
+    #                     fo.write('[' + str(datetime.datetime.now()) + '] ' + text + '\n')
+    #                 fo.close()
+    # except Exception as e:
+    #     clear_console_line()
+    #     technical_data = str('[Time Now:' + str(datetime.datetime.now()) + ' Issue Time:' + str(tm_stamp) + '] ' + str(e) + '. reattempting in 1 second')
+    #     if debug_mode is False:
+    #         pr_technical_data(technical_data)
+    #     else:
+    #         print(technical_data)
+    #     time.sleep(1)
+    #     funk_extras()
 
 
 def defcon_news():
@@ -351,7 +354,7 @@ def defcon_news():
 
         article_title = _.replace('https://www.defconlevel.com/', '').replace('.php', '')
 
-        out_file = './extra_data/defcon_news_' + article_title + '_' + tm_stamp + '.txt'
+        out_file = './extra_data/defcon_news_' + article_title.replace('/', '') + '_' + tm_stamp + '.txt'
         rHead = requests.get(url)
         data = rHead.text
         soup = BeautifulSoup(data, "html.parser")
